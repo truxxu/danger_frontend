@@ -8,4 +8,4 @@ const Discussion = () => {
   )
 }
 
-export default DiscussionDiscussion page
+export default Discussion
