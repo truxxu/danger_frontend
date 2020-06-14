@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Text = () => {
+const Text = ({content, align}) => {
   return (
-    <div>
-      Text Component
+    <div className={`ui container ${align}`}>
+      <p>{content}</p>
     </div>
   )
 }
