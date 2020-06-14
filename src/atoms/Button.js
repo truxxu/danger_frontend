@@ -1,10 +1,8 @@
 import React from 'react'
 
-const Button = () => {
+const Button = ({name}) => {
   return (
-    <div>
-      Button Component
-    </div>
+    <button className="ui primary button large">{name}</button>
   )
 }
 

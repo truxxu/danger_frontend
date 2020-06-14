@@ -4,7 +4,6 @@ import Container from '../atoms/Container';
 import HeaderImage from '../atoms/HeaderImage';
 import Text from '../atoms/Text';
 import ItemList from '../organisms/ItemList';
-import Link from '../atoms/Link'
 
 const Home = () => {
 
