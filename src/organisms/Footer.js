@@ -1,16 +1,23 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link as NavLink } from "react-router-dom";
 
 import "./Footer.scss";
+import Link from '../atoms/Link'
 
 const Footer = () => {
   return (
     <nav>
       <div className="ui divider" />
       <div className="Footer__LinkContainer">
-        <Link to="/faq">FAQ</Link>
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
+        <Link>
+          <NavLink to="/faq">FAQ</NavLink>
+        </Link>
+        <Link>
+          <NavLink to="/about">About</NavLink>
+        </Link>
+        <Link>
+          <NavLink to="/contact">Contact</NavLink>
+        </Link>
       </div>
     </nav>
   )

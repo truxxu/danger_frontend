@@ -1,9 +1,11 @@
 import React from 'react'
 
-const Link = () => {
+import './Link.scss';
+
+const Link = ({children}) => {
   return (
-    <div>
-      Link Component
+    <div className="Link__Container">
+      {children}
     </div>
   )
 }
