@@ -33,7 +33,6 @@ const Topic = (props) => {
       />
       <Button name="Add new entry" />
       <div className="ui divider" />
-      <NewEntryForm />
       <Container>
         <ItemList linkList={linkList} to="discussion"/>
       </Container>

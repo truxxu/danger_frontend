@@ -5,6 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 
+import './App.scss';
 import Home from './pages/Home';
 import Topic from './pages/Topic';
 import Discussion from './pages/Discussion';
@@ -15,7 +16,7 @@ import Footer from './organisms/Footer';
 const App = () => {
   return (
     <Router>
-      <div className="ui container">
+      <div className="ui container App__Container">
 
         <Navbar />
 
