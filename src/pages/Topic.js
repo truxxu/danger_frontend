@@ -7,6 +7,7 @@ import Container from '../atoms/Container';
 import Button from '../atoms/Button';
 import NewEntryForm from '../organisms/NewEntryForm';
 import ItemList from '../organisms/ItemList';
+import Pagination from '../organisms/Pagination';
 
 const Topic = (props) => {
 
@@ -35,6 +36,7 @@ const Topic = (props) => {
       <Container>
         <ItemList linkList={linkList} to="discussion"/>
       </Container>
+      <Pagination />
     </div>
   )
 }

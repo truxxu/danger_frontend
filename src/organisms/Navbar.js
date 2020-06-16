@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link as NavLink } from "react-router-dom";
 
 import "./Navbar.scss";
+import Link from '../atoms/Link'
 
 const Navbar = () => {
 
@@ -19,14 +20,20 @@ const Navbar = () => {
   ]
   const renderLinkList = () => {
     return linkList.map(link => {
-      return <Link to={`/topic/${link.id}`}>{link.title}</Link>
+      return (
+        <Link key={link.id}>
+          <NavLink to={`/topic/${link.id}`}>{link.title}</NavLink>
+        </Link>
+      )
     })
   }
 
   return (
     <nav>
       <div className="Navbar__LinkContainer">
-        <Link to="/">Home</Link>
+        <Link>
+          <NavLink to="/">Home</NavLink>
+        </Link>
         {renderLinkList()}
       </div>
       <div className="ui divider" />

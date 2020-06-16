@@ -9,7 +9,7 @@ const Discussion = () => {
 
   return (
     <div>
-      Discussion page
+      {`Discussion ID ${id} page`}
       <HeaderImage imageSrc="https://picsum.photos/300/200" />
     </div>
   )
