@@ -2,7 +2,7 @@ import React from 'react'
 
 const Container = ({children}) => {
   return (
-    <div className="ui raised very padded segment">
+    <div className="ui raised segment center aligned">
       {children}
     </div>
   )

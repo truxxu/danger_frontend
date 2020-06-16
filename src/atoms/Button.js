@@ -1,8 +1,12 @@
-import React from 'react'
+import React from 'react';
+
+import './Button.scss';
 
 const Button = ({name}) => {
   return (
-    <button className="ui primary button large">{name}</button>
+    <div className="Button__Container">
+      <button className="ui primary button large">{name}</button>
+    </div>
   )
 }
 

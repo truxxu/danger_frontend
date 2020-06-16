@@ -32,6 +32,7 @@ const Topic = (props) => {
         align="center aligned"
       />
       <Button name="Add new entry" />
+      <div className="ui divider" />
       <NewEntryForm />
       <Container>
         <ItemList linkList={linkList} to="discussion"/>
