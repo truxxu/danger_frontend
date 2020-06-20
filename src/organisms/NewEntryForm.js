@@ -1,11 +1,12 @@
 import React from 'react';
 
+import './NewEntryForm.scss';
 import Container from '../atoms/Container';
 import Button from '../atoms/Button';
 
-const NewEntryForm = () => {
-  return (
-    <div>
+const NewEntryForm = ({show}) => {
+
+  const content = <div className="NewEntryForm">
       <Container>
         <form className="ui form">
           <div className="field">
@@ -14,13 +15,14 @@ const NewEntryForm = () => {
           </div>
           <div className="field">
             <label>Title</label>
-            <input />
+            <textarea placeholder="Tell us more" rows="2" />
           </div>
           <Button type="submit" name="Post"/>
         </form>
       </Container>
     </div>
-  )
+
+  return show && content
 }
 
 export default NewEntryForm
