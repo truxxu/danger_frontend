@@ -13,7 +13,7 @@ import PageContainer from '../atoms/PageContainer';
 const Topic = (props) => {
 
   let { id } = useParams();
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(false);
   let linkList = [
     {
       id: 1,
@@ -34,7 +34,7 @@ const Topic = (props) => {
         align="center aligned"
       />
       <Button name="Add new entry" onClick={() => setVisible(!visible)}/>
-      <NewEntryForm show={visible}/>
+      <NewEntryForm show={visible} maxLength={500} />
       <div className="ui divider" />
       <Container>
         <ItemList linkList={linkList} to="discussion"/>
