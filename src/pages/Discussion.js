@@ -1,28 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import HeaderImage from '../atoms/HeaderImage';
 import Container from '../atoms/Container';
 import Button from '../atoms/Button';
-import CommentList from '../organisms/CommentList'
+import PageContainer from '../atoms/PageContainer';
+import CommentList from '../organisms/CommentList';
+import NewEntryForm from '../organisms/NewEntryForm';
 
 const Discussion = () => {
 
   let { id } = useParams();
+  const [visible, setVisible] = useState(false);
 
   return (
-    <div>
+    <PageContainer>
       <HeaderImage imageSrc="https://picsum.photos/300/200" />
       <div className="ui divider" />
       <Container>
         <h2>{`Discussion ID ${id} page`}</h2>
       </Container>
-      <Button name="Reply" />
       <Container>
         <CommentList />
       </Container>
-      <Button name="Reply" />
-    </div>
+      <Button
+        name={visible ? "Close" : "Reply"}
+        onClick={() => setVisible(!visible)}
+      />
+      <NewEntryForm
+        label="Comment"
+        show={visible}
+        maxLength={500}
+      />
+    </PageContainer>
   )
 }
 

@@ -2,10 +2,10 @@ import React from 'react';
 
 import './Button.scss';
 
-const Button = ({name}) => {
+const Button = ({name, onClick}) => {
   return (
     <div className="Button__Container">
-      <button className="ui primary button large">{name}</button>
+      <button onClick={onClick} className="ui primary button large">{name}</button>
     </div>
   )
 }
