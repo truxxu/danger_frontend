@@ -4,7 +4,7 @@ import './NewEntryForm.scss';
 import Container from '../atoms/Container';
 import Button from '../atoms/Button';
 
-const NewEntryForm = ({show, maxLength}) => {
+const NewEntryForm = ({show, maxLength, label}) => {
 
   const [charNum, setCharNum] = useState(0)
 
@@ -19,13 +19,20 @@ const NewEntryForm = ({show, maxLength}) => {
         <form className="ui form">
           <div className="field">
             <label>Name</label>
-            <input placeholder="(Optional)"/>
+            <input
+              placeholder="(Optional)"
+              maxLength={50}
+            />
           </div>
           <div className="field">
-            <label>Title {charNum}/{maxLength}*</label>
+            <div className="NewEntryForm__LabelContainer">
+              <label>{label}*</label>
+              <label>{charNum}/{maxLength}</label>
+            </div>
             <textarea
+              required
               maxLength={maxLength}
-              rows="3"
+              rows={2}
               onChange={(e) => handleChange(e)}
             />
           </div>
