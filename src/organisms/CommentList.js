@@ -1,14 +1,16 @@
 import React from 'react';
 
-import Comment from '../molecules/Comment'
+import Comment from '../molecules/Comment';
 
-const CommentList = () => {
+const CommentList = ({data}) => {
+
+  const renderComment = () => {
+    return data.map(comment => <Comment key={comment.id} data={comment}/>)
+  }
+
   return (
-    <div className="ui divided list">
-      <Comment />
-      <Comment />
-      <Comment />
-      <Comment />
+    <div className="ui minimal comments">
+      {renderComment()}
     </div>
   )
 }

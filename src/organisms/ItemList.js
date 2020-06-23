@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 import Text from '../atoms/Text';
 
-const ItemList = ({linkList, to}) => {
+const ItemList = ({data, to}) => {
 
   const renderLinkList = () => {
-    return linkList.map(link => {
+    return data.map(link => {
       return (
-        <Link to={`/${to}/${link.id}`} role="listitem" className="item" key={link.id}>
+        <Link to={`${to}/${link.id}`} role="listitem" className="item" key={link.id}>
           <div className="content">
             <Text content={link.title} align="header center aligned"/>
             <Text content={link.description} align="description center aligned"/>
@@ -19,10 +19,14 @@ const ItemList = ({linkList, to}) => {
   }
 
   return (
-    <div role="list" className="ui selection divided big list">
+    <div role="list" className="ui selection divided list">
       {renderLinkList()}
     </div>
   )
+}
+
+ItemList.defaultProps = {
+  from: ""
 }
 
 export default ItemList

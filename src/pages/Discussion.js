@@ -10,18 +10,39 @@ import NewEntryForm from '../organisms/NewEntryForm';
 
 const Discussion = () => {
 
-  let { id } = useParams();
+  let { discussionId } = useParams();
   const [visible, setVisible] = useState(false);
+
+  let linkList = [
+    {
+      id: 1,
+      name: "Wojak",
+      created: "21/06/2020 22:30",
+      content: "tfw nogf"
+    },
+    {
+      id: 2,
+      name: "Pepe",
+      created: "21/06/2020 22:31",
+      content: "just bee yourself ;)"
+    },
+    {
+      id: 3,
+      name: "Wojak",
+      created: "21/06/2020 22:32",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
+    },
+  ];
 
   return (
     <PageContainer>
       <HeaderImage imageSrc="https://picsum.photos/300/200" />
       <div className="ui divider" />
       <Container>
-        <h2>{`Discussion ID ${id} page`}</h2>
+        <h2>{`Discussion ID ${discussionId} page`}</h2>
       </Container>
       <Container>
-        <CommentList />
+        <CommentList data={linkList}/>
       </Container>
       <Button
         name={visible ? "Close" : "Reply"}

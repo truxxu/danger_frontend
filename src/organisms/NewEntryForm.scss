@@ -1,22 +1,11 @@
 .NewEntryForm {
-  width: 90%;
-
   &__LabelContainer {
       display: flex;
       justify-content: space-between;
       font-weight: bold;
   }
+}
 
-  label {
+  .field label {
     text-align: left;
   }
-
-
-}
-
-
-@media (min-width: 768px) {
-  .NewEntryForm {
-    width: 50%
-  }
-}
