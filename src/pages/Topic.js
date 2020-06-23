@@ -45,7 +45,7 @@ const Topic = (props) => {
       />
       <div className="ui divider" />
       <Container>
-        <ItemList linkList={linkList} to={`${url}/discussion`}/>
+        <ItemList data={linkList} to={`${url}/discussion`}/>
       </Container>
       <Pagination />
     </PageContainer>

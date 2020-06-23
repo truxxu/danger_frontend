@@ -1,2 +1,7 @@
-.Comment__Container {
+.comment .content {
+  text-align: left;
+}
+.Comment__Header {
+  display: flex;
+  flex-direction: row;
 }
