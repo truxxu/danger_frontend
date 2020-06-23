@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useRouteMatch } from 'react-router-dom';
 
 import HeaderImage from '../atoms/HeaderImage';
 import Text from '../atoms/Text';
@@ -12,7 +12,8 @@ import Pagination from '../organisms/Pagination';
 
 const Topic = (props) => {
 
-  let { id } = useParams();
+  let { topicId } = useParams();
+  let { url } = useRouteMatch();
   const [visible, setVisible] = useState(false);
   let linkList = [
     {
@@ -28,9 +29,9 @@ const Topic = (props) => {
   return (
     <PageContainer>
       <HeaderImage imageSrc="https://picsum.photos/300/200" />
-      <h2 className="ui header center aligned">{`Topic ID: ${id}`}</h2>
+      <h2 className="ui header center aligned">{`Topic ID: ${topicId}`}</h2>
       <Text
-        content={`Description about Topic ID: ${id}`}
+        content={`Description about Topic ID: ${topicId}`}
         align="center aligned"
       />
       <Button
@@ -44,7 +45,7 @@ const Topic = (props) => {
       />
       <div className="ui divider" />
       <Container>
-        <ItemList linkList={linkList} to="discussion"/>
+        <ItemList linkList={linkList} to={`${url}/discussion`}/>
       </Container>
       <Pagination />
     </PageContainer>

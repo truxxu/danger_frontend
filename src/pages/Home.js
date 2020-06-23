@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <div>
       <HeaderImage imageSrc="https://picsum.photos/300/200" />
-      <h2 className="ui header center aligned">Site Name</h2>
+      <h1 className="ui header center aligned">Site Name</h1>
       <Text
         content="Description text about the site"
         align="center aligned"

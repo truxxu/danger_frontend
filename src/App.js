@@ -21,14 +21,14 @@ const App = () => {
         <Navbar />
 
         <Switch>
-          <Route exact path="/">
-            <Home />
+          <Route path="/topic/:topicId/discussion/:discussionId">
+            <Discussion />
           </Route>
-          <Route path="/topic/:id">
+          <Route path="/topic/:topicId">
             <Topic />
           </Route>
-          <Route path="/discussion/:id">
-            <Discussion />
+          <Route exact path="/">
+            <Home />
           </Route>
           <Route path="/faq">
             <Info title="FAQ Page"/>

@@ -10,7 +10,7 @@ import NewEntryForm from '../organisms/NewEntryForm';
 
 const Discussion = () => {
 
-  let { id } = useParams();
+  let { discussionId } = useParams();
   const [visible, setVisible] = useState(false);
 
   return (
@@ -18,7 +18,7 @@ const Discussion = () => {
       <HeaderImage imageSrc="https://picsum.photos/300/200" />
       <div className="ui divider" />
       <Container>
-        <h2>{`Discussion ID ${id} page`}</h2>
+        <h2>{`Discussion ID ${discussionId} page`}</h2>
       </Container>
       <Container>
         <CommentList />

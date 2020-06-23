@@ -8,7 +8,7 @@ const ItemList = ({linkList, to}) => {
   const renderLinkList = () => {
     return linkList.map(link => {
       return (
-        <Link to={`/${to}/${link.id}`} role="listitem" className="item" key={link.id}>
+        <Link to={`${to}/${link.id}`} role="listitem" className="item" key={link.id}>
           <div className="content">
             <Text content={link.title} align="header center aligned"/>
             <Text content={link.description} align="description center aligned"/>
@@ -23,6 +23,10 @@ const ItemList = ({linkList, to}) => {
       {renderLinkList()}
     </div>
   )
+}
+
+ItemList.defaultProps = {
+  from: ""
 }
 
 export default ItemList
