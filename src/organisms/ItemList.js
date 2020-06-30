@@ -10,7 +10,7 @@ const ItemList = ({data, to}) => {
       return (
         <Link to={`${to}/${link.id}`} role="listitem" className="item" key={link.id}>
           <div className="content">
-            <Text content={link.name} align="header center aligned"/>
+            <Text content={link.title} align="header center aligned"/>
             <Text content={link.description} align="description center aligned"/>
           </div>
         </Link>

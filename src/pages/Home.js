@@ -1,20 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import Container from '../atoms/Container';
 import HeaderImage from '../atoms/HeaderImage';
 import Text from '../atoms/Text';
 import PageContainer from '../atoms/PageContainer';
 import ItemList from '../organisms/ItemList';
-import useResources from '../hooks/useResources';
 
-
-const Home = () => {
-
-  const [getResource, results, errorMessage, isLoading] = useResources();
-
-  useEffect(() => {
-    getResource('topics')
-  }, [])
+const Home = ({results, isLoading}) => {
 
   return (
     <PageContainer>

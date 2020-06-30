@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,13 +12,21 @@ import Discussion from './pages/Discussion';
 import Info from './pages/Info';
 import Navbar from './organisms/Navbar';
 import Footer from './organisms/Footer';
+import useResources from './hooks/useResources';
 
 const App = () => {
+
+  const [getResource, results, errorMessage, isLoading] = useResources();
+
+  useEffect(() => {
+    getResource('topics')
+  }, [])
+
   return (
     <Router>
       <div className="ui container App__Container">
 
-        <Navbar />
+        <Navbar results={results} isLoading={isLoading}/>
 
         <Switch>
           <Route path="/topic/:topicId/discussion/:discussionId">
@@ -28,7 +36,7 @@ const App = () => {
             <Topic />
           </Route>
           <Route exact path="/">
-            <Home />
+            <Home results={results} isLoading={isLoading}/>
           </Route>
           <Route path="/faq">
             <Info title="FAQ Page"/>

@@ -3,15 +3,15 @@ import React from 'react';
 import './Comment.scss';
 
 const Comment = (props) => {
-  const {name, created, content} = props.data;
+  const {author, created_at, message} = props.data;
   return (
     <div className="comment">
       <div className="content">
         <div className="Comment__Header">
-          <div className="author">{name}</div>
-          <div className="metadata"><span>wrote on {created}</span></div>
+          <div className="author">{author}</div>
+          <div className="metadata"><span>wrote on {created_at}</span></div>
         </div>
-        <div className="text">{content}</div>
+        <div className="text">{message}</div>
       </div>
       <div className="ui divider" />
     </div>
