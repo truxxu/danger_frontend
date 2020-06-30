@@ -6,21 +6,8 @@ import Text from '../atoms/Text';
 import PageContainer from '../atoms/PageContainer';
 import ItemList from '../organisms/ItemList';
 
+const Home = ({results, isLoading}) => {
 
-const Home = () => {
-
-  const linkList = [
-    {
-      id: 1,
-      title: "Section A",
-      description: "A description about section A"
-    },
-    {
-      id: 2,
-      title: "Section B",
-      description: "A description about section B"
-    }
-  ]
   return (
     <PageContainer>
       <HeaderImage imageSrc="https://picsum.photos/300/200" />
@@ -30,7 +17,7 @@ const Home = () => {
         align="center aligned"
       />
       <Container>
-        <ItemList data={linkList} to="topic" />
+        <ItemList data={results} to="topic" />
       </Container>
     </PageContainer>
   )

@@ -4,25 +4,13 @@ import { Link as NavLink } from "react-router-dom";
 import "./Navbar.scss";
 import Link from '../atoms/Link'
 
-const Navbar = () => {
+const Navbar = ({results, isLoading}) => {
 
-  const linkList = [
-    {
-      id: 1,
-      title: "Section A",
-      description: "A description about section A"
-    },
-    {
-      id: 2,
-      title: "Section B",
-      description: "A description about section B"
-    }
-  ]
   const renderLinkList = () => {
-    return linkList.map(link => {
+    return results.map(link => {
       return (
         <Link key={link.id}>
-          <NavLink to={`/topic/${link.id}`}>{link.title}</NavLink>
+          <NavLink to={`/topic/${link.id}`}>{link.name}</NavLink>
         </Link>
       )
     })

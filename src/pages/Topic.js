@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useRouteMatch } from 'react-router-dom';
 
 import HeaderImage from '../atoms/HeaderImage';
@@ -9,22 +9,18 @@ import PageContainer from '../atoms/PageContainer';
 import NewEntryForm from '../organisms/NewEntryForm';
 import ItemList from '../organisms/ItemList';
 import Pagination from '../organisms/Pagination';
+import useResources from '../hooks/useResources';
 
 const Topic = (props) => {
 
   let { topicId } = useParams();
   let { url } = useRouteMatch();
   const [visible, setVisible] = useState(false);
-  let linkList = [
-    {
-      id: 1,
-      title: "Discussion A",
-    },
-    {
-      id: 2,
-      title: "Discussion B",
-    }
-  ];
+  const [getResource, results, errorMessage, isLoading] = useResources();
+
+  useEffect(() => {
+    getResource(`topics/${topicId}/discussions`)
+  }, []);
 
   return (
     <PageContainer>
@@ -45,7 +41,7 @@ const Topic = (props) => {
       />
       <div className="ui divider" />
       <Container>
-        <ItemList data={linkList} to={`${url}/discussion`}/>
+        <ItemList data={results} to={`${url}/discussion`}/>
       </Container>
       <Pagination />
     </PageContainer>
