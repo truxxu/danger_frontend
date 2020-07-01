@@ -14,10 +14,11 @@ export default () => {
       setIsLoading(false);
       setResults(response.data);
     } catch (error) {
-      setErrorMessage('Algo salio mal, intentalo de nuevo');
+      setErrorMessage('Couldn\'t load resource');
+      window.alert('Something happened, try again later')
       // setIsLoading(false);
     }
   }
 
-  return [getResource, results, errorMessage, isLoading]
+  return [getResource, results, isLoading]
 }

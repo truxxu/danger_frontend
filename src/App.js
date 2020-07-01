@@ -16,7 +16,7 @@ import useResources from './hooks/useResources';
 
 const App = () => {
 
-  const [getResource, results, errorMessage, isLoading] = useResources();
+  const [getResource, results, isLoading] = useResources();
 
   useEffect(() => {
     getResource('topics')

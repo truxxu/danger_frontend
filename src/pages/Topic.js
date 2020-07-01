@@ -17,7 +17,7 @@ const Topic = (props) => {
   let { topicId } = useParams();
   let { url } = useRouteMatch();
   const [visible, setVisible] = useState(false);
-  const [getResource, results, errorMessage, isLoading] = useResources();
+  const [getResource, results, isLoading] = useResources();
 
   useEffect(() => {
     getResource(`topics/${topicId}/discussions`)
