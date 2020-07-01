@@ -15,7 +15,7 @@ export default () => {
       setResults(response.data);
     } catch (error) {
       setErrorMessage('Algo salio mal, intentalo de nuevo');
-      setIsLoading(false);
+      // setIsLoading(false);
     }
   }
 

@@ -6,6 +6,7 @@ import Text from '../atoms/Text';
 import Container from '../atoms/Container';
 import Button from '../atoms/Button';
 import PageContainer from '../atoms/PageContainer';
+import LoadingIndicator from '../atoms/LoadingIndicator';
 import NewEntryForm from '../organisms/NewEntryForm';
 import ItemList from '../organisms/ItemList';
 import Pagination from '../organisms/Pagination';
@@ -20,7 +21,7 @@ const Topic = (props) => {
 
   useEffect(() => {
     getResource(`topics/${topicId}/discussions`)
-  }, []);
+  }, [topicId]);
 
   return (
     <PageContainer>
@@ -41,7 +42,11 @@ const Topic = (props) => {
       />
       <div className="ui divider" />
       <Container>
-        <ItemList data={results} to={`${url}/discussion`}/>
+        { isLoading ?
+          <LoadingIndicator />
+          :
+          <ItemList data={results} to={`${url}/discussion`}/>
+        }
       </Container>
       <Pagination />
     </PageContainer>

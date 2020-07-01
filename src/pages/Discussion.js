@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import HeaderImage from '../atoms/HeaderImage';
 import Container from '../atoms/Container';
 import Button from '../atoms/Button';
+import LoadingIndicator from '../atoms/LoadingIndicator';
 import PageContainer from '../atoms/PageContainer';
 import CommentList from '../organisms/CommentList';
 import NewEntryForm from '../organisms/NewEntryForm';
@@ -27,7 +28,11 @@ const Discussion = () => {
         <h2>{`Discussion ID ${discussionId} page`}</h2>
       </Container>
       <Container>
-        <CommentList data={results}/>
+        { isLoading ?
+          <LoadingIndicator />
+          :
+          <CommentList data={results}/>
+        }
       </Container>
       <Button
         name={visible ? "Close" : "Reply"}
