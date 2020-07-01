@@ -1,17 +1,26 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 import Text from '../atoms/Text';
 
 const ItemList = ({data, to}) => {
 
   const renderLinkList = () => {
+
     return data.map(link => {
+      const {id, title, author, description, created_at} = link
       return (
-        <Link to={`${to}/${link.id}`} role="listitem" className="item" key={link.id}>
+        <Link to={`${to}/${id}`} role="listitem" className="item" key={id}>
           <div className="content">
-            <Text content={link.title} align="header center aligned"/>
-            <Text content={link.description} align="description center aligned"/>
+            <Text content={title} align="header center aligned"/>
+            {author &&
+              <Text
+                content={`by ${author} on ${moment(created_at).format('D/MM/YY h:mma')}`}
+                align="description center aligned"
+              />
+            }
+            <Text content={description} align="description center aligned"/>
           </div>
         </Link>
       )
