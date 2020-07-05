@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,21 +12,21 @@ import Discussion from './pages/Discussion';
 import Info from './pages/Info';
 import Navbar from './organisms/Navbar';
 import Footer from './organisms/Footer';
-import useResources from './hooks/useResources';
+import { Context } from './context/TopicsContext';
 
 const App = () => {
-
-  const [getResource, results, isLoading] = useResources();
+  const { getTopics } = useContext(Context)
 
   useEffect(() => {
-    getResource('topics')
+    getTopics()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <Router>
       <div className="ui container App__Container">
 
-        <Navbar results={results} isLoading={isLoading}/>
+        <Navbar/>
 
         <Switch>
           <Route path="/topic/:topicId/discussion/:discussionId">
@@ -36,7 +36,7 @@ const App = () => {
             <Topic />
           </Route>
           <Route exact path="/">
-            <Home results={results} isLoading={isLoading}/>
+            <Home />
           </Route>
           <Route path="/faq">
             <Info title="FAQ Page"/>
