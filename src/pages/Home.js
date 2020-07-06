@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import Container from '../atoms/Container';
 import HeaderImage from '../atoms/HeaderImage';
 import Text from '../atoms/Text';
 import PageContainer from '../atoms/PageContainer';
+import LoadingIndicator from '../atoms/LoadingIndicator';
 import ItemList from '../organisms/ItemList';
+import { Context } from '../context/TopicsContext';
 
-const Home = ({results, isLoading}) => {
+const Home = () => {
+
+  const { state } = useContext(Context);
 
   return (
     <PageContainer>
@@ -17,10 +21,14 @@ const Home = ({results, isLoading}) => {
         align="center aligned"
       />
       <Container>
-        <ItemList data={results} to="topic" />
+        {state.isLoading ?
+          <LoadingIndicator />
+          :
+          <ItemList data={state.topics} to="topic" />
+        }
       </Container>
     </PageContainer>
-  )
+  );
 }
 
 export default Home
