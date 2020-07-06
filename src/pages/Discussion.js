@@ -9,15 +9,20 @@ import PageContainer from '../atoms/PageContainer';
 import CommentList from '../organisms/CommentList';
 import NewEntryForm from '../organisms/NewEntryForm';
 import useResources from '../hooks/useResources';
+import Comment from '../molecules/Comment';
 
 const Discussion = () => {
 
   let { topicId, discussionId } = useParams();
+
   const [visible, setVisible] = useState(false);
-  const [getResource, results, isLoading] = useResources();
+
+  const [getPosts, posts, isLoadingPosts] = useResources();
+  const [getDiscussion, discussion] = useResources();
 
   useEffect(() => {
-    getResource(`topics/${topicId}/discussions/${discussionId}/posts`)
+    getDiscussion(`topics/${topicId}/discussions/${discussionId}`)
+    getPosts(`topics/${topicId}/discussions/${discussionId}/posts`)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -26,13 +31,15 @@ const Discussion = () => {
       <TopicHeader topicId={topicId}/>
       <div className="ui divider" />
       <Container>
-        <h2>{`Discussion ID ${discussionId} page`}</h2>
+        <div className="ui large comments">
+          <Comment data={discussion}/>
+        </div>
       </Container>
       <Container>
-        { isLoading ?
+        { isLoadingPosts ?
           <LoadingIndicator />
           :
-          <CommentList data={results}/>
+          <CommentList data={posts}/>
         }
       </Container>
       <Button
