@@ -9,6 +9,7 @@ import PageContainer from '../atoms/PageContainer';
 import CommentList from '../organisms/CommentList';
 import NewEntryForm from '../organisms/NewEntryForm';
 import useResources from '../hooks/useResources';
+import Comment from '../molecules/Comment';
 
 const Discussion = () => {
 
@@ -30,7 +31,9 @@ const Discussion = () => {
       <TopicHeader topicId={topicId}/>
       <div className="ui divider" />
       <Container>
-        <h2>{`Discussion ID ${discussionId} page`}</h2>
+        <div className="ui large comments">
+          <Comment data={discussion}/>
+        </div>
       </Container>
       <Container>
         { isLoadingPosts ?
