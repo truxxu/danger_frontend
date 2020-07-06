@@ -8,13 +8,18 @@ import { Context } from '../context/TopicsContext';
 
 const Navbar = () => {
 
-  const { state } = useContext(Context)
+  const { state, findTopic } = useContext(Context);
 
   const renderLinkList = () => {
     return state.topics.map(link => {
       return (
-        <Link key={link.id}>
-          <NavLink to={`/topic/${link.id}`}>{link.title}</NavLink>
+        <Link key={link.id} className="Navbar__Link">
+          <NavLink
+            onClick={() => findTopic(link.id)}
+            to={`/topic/${link.id}`}
+          >
+            {link.title}
+          </NavLink>
         </Link>
       )
     })

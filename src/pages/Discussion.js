@@ -18,6 +18,7 @@ const Discussion = () => {
 
   useEffect(() => {
     getResource(`topics/${topicId}/discussions/${discussionId}/posts`)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

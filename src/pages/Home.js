@@ -10,7 +10,7 @@ import { Context } from '../context/TopicsContext';
 
 const Home = () => {
 
-  const { state } = useContext(Context)
+  const { state } = useContext(Context);
 
   return (
     <PageContainer>
@@ -28,7 +28,7 @@ const Home = () => {
         }
       </Container>
     </PageContainer>
-  )
+  );
 }
 
 export default Home

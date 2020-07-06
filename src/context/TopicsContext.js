@@ -7,6 +7,11 @@ const topicsReducer = (state, action) => {
       return {...state, topics: action.payload, isLoading: false};
     case 'add_error':
       return {...state, errorMessage: action.payload};
+    case 'find_topic':
+      return {
+        ...state,
+        activeTopic: state.topics.find(topic => topic.id === parseInt(action.payload))
+      };
     default:
       return state;
   }
@@ -24,8 +29,12 @@ const getTopics = dispatch => async () => {
   }
 };
 
+const findTopic = dispatch => (id) => {
+  dispatch({ type: 'find_topic', payload: id})
+};
+
 export const { Provider, Context } = createDataContext(
   topicsReducer,
-  { getTopics },
-  { topics: [], isLoading: true}
-)
+  { getTopics, findTopic },
+  { topics: [], isLoading: true, activeTopic: null}
+);

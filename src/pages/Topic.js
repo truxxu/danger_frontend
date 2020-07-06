@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useRouteMatch } from 'react-router-dom';
 
 import HeaderImage from '../atoms/HeaderImage';
@@ -11,24 +11,31 @@ import NewEntryForm from '../organisms/NewEntryForm';
 import ItemList from '../organisms/ItemList';
 import Pagination from '../organisms/Pagination';
 import useResources from '../hooks/useResources';
+import { Context } from '../context/TopicsContext';
 
 const Topic = (props) => {
 
+  const { state } = useContext(Context);
+  const { title, description } = state.activeTopic;
+
   let { topicId } = useParams();
   let { url } = useRouteMatch();
+
   const [visible, setVisible] = useState(false);
   const [getResource, results, isLoading] = useResources();
 
   useEffect(() => {
     getResource(`topics/${topicId}/discussions`)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [topicId]);
+
 
   return (
     <PageContainer>
       <HeaderImage imageSrc="https://picsum.photos/300/200" />
-      <h2 className="ui header center aligned">{`Topic ID: ${topicId}`}</h2>
+      <h2 className="ui header center aligned">{title}</h2>
       <Text
-        content={`Description about Topic ID: ${topicId}`}
+        content={description}
         align="center aligned"
       />
       <Button
