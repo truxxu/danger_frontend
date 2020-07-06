@@ -17,21 +17,16 @@ const Topic = (props) => {
   let { url } = useRouteMatch();
 
   const [visible, setVisible] = useState(false);
-  const [getTopic, topic] = useResources();
   const [getDiscussions, discussions, isLoadingDiscussions] = useResources();
 
   useEffect(() => {
-    getTopic(`topics/${topicId}`)
     getDiscussions(`topics/${topicId}/discussions`)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [topicId]);
 
   return (
     <PageContainer>
-      <TopicHeader
-        title={topic.title}
-        description={topic.description}
-      />
+      <TopicHeader topicId={topicId}/>
       <Button
         name={visible ? "Close" : "Add new entry"}
         onClick={() => setVisible(!visible)}

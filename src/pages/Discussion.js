@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import HeaderImage from '../atoms/HeaderImage';
+import TopicHeader from '../molecules/TopicHeader';
 import Container from '../atoms/Container';
 import Button from '../atoms/Button';
 import LoadingIndicator from '../atoms/LoadingIndicator';
@@ -23,7 +23,7 @@ const Discussion = () => {
 
   return (
     <PageContainer>
-      <HeaderImage imageSrc="https://picsum.photos/300/200" />
+      <TopicHeader topicId={topicId}/>
       <div className="ui divider" />
       <Container>
         <h2>{`Discussion ID ${discussionId} page`}</h2>
