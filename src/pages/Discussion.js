@@ -13,11 +13,15 @@ import useResources from '../hooks/useResources';
 const Discussion = () => {
 
   let { topicId, discussionId } = useParams();
+
   const [visible, setVisible] = useState(false);
-  const [getResource, results, isLoading] = useResources();
+
+  const [getPosts, posts, isLoadingPosts] = useResources();
+  const [getDiscussion, discussion] = useResources();
 
   useEffect(() => {
-    getResource(`topics/${topicId}/discussions/${discussionId}/posts`)
+    getDiscussion(`topics/${topicId}/discussions/${discussionId}`)
+    getPosts(`topics/${topicId}/discussions/${discussionId}/posts`)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -29,10 +33,10 @@ const Discussion = () => {
         <h2>{`Discussion ID ${discussionId} page`}</h2>
       </Container>
       <Container>
-        { isLoading ?
+        { isLoadingPosts ?
           <LoadingIndicator />
           :
-          <CommentList data={results}/>
+          <CommentList data={posts}/>
         }
       </Container>
       <Button

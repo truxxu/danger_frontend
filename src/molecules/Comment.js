@@ -4,7 +4,7 @@ import './Comment.scss';
 import moment from "moment";
 
 const Comment = (props) => {
-  const {author, created_at, message} = props.data;
+  const {author, created_at, message, title} = props.data;
   return (
     <div className="comment">
       <div className="content">
@@ -16,7 +16,7 @@ const Comment = (props) => {
             </span>
           </div>
         </div>
-        <div className="text">{message}</div>
+        <div className="text">{message || title}</div>
       </div>
       <div className="ui divider" />
     </div>
