@@ -14,13 +14,15 @@ import useResources from '../hooks/useResources';
 const Topic = (props) => {
 
   let { topicId } = useParams();
+  const currentUrl = `topics/${topicId}/discussions`;
   let { url } = useRouteMatch();
 
   const [visible, setVisible] = useState(false);
   const [getDiscussions, discussions, isLoadingDiscussions] = useResources();
 
+
   useEffect(() => {
-    getDiscussions(`topics/${topicId}/discussions`)
+    getDiscussions(currentUrl)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [topicId]);
 
@@ -35,6 +37,7 @@ const Topic = (props) => {
         label="Title"
         show={visible}
         maxLength={75}
+        url={currentUrl}
       />
       <div className="ui divider" />
       <Container>
