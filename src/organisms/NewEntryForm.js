@@ -5,7 +5,7 @@ import Container from '../atoms/Container';
 import Button from '../atoms/Button';
 import useCreateNewEntry from '../hooks/useCreateNewEntry';
 
-const NewEntryForm = ({show, maxLength, label, url}) => {
+const NewEntryForm = ({show, setShow, maxLength, label, url}) => {
 
   const [text, setText] = useState('');
   const [author, setAuthor] = useState(undefined);
@@ -19,10 +19,15 @@ const NewEntryForm = ({show, maxLength, label, url}) => {
   };
 
   const handleAuthorChange = (event) => setAuthor(event.target.value);
+  const resetInput = () => {
+    setText('');
+    setAuthor(undefined);
+    setShow(false);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createNewEntry(url, {author, title: text})
+    createNewEntry(url, {author, title: text}, resetInput)
   }
 
   const content = <Container>
@@ -49,7 +54,7 @@ const NewEntryForm = ({show, maxLength, label, url}) => {
             onChange={(e) => handleTextChange(e)}
           />
         </div>
-        { errorMessage }
+        <div className="NewEntryForm__ErrorText">{errorMessage}</div>
         { isLoading ?
           <Button disabled />
           :

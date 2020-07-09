@@ -35,13 +35,7 @@ const Discussion = () => {
           <Comment data={discussion}/>
         </div>
       </Container>
-      <Container>
-        { isLoadingPosts ?
-          <LoadingIndicator />
-          :
-          <CommentList data={posts}/>
-        }
-      </Container>
+      <CommentList data={posts} isLoading={isLoadingPosts} />
       <Button onClick={() => setVisible(!visible)}>
         {visible ? "Close" : "Reply"}
       </Button>

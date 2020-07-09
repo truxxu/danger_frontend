@@ -1,11 +1,17 @@
 .NewEntryForm {
+
   &__LabelContainer {
       display: flex;
       justify-content: space-between;
       font-weight: bold;
   }
+
+  &__ErrorText {
+    color: red;
+  }
 }
 
-  .field label {
-    text-align: left;
-  }
+.field label {
+  text-align: left;
+}
+

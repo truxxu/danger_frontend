@@ -17,7 +17,7 @@ const Topic = (props) => {
   const currentUrl = `topics/${topicId}/discussions`;
   let { url } = useRouteMatch();
 
-  const [visible, setVisible] = useState(false);
+  const [show, setShow] = useState(false);
   const [getDiscussions, discussions, isLoadingDiscussions] = useResources();
 
 
@@ -29,12 +29,13 @@ const Topic = (props) => {
   return (
     <PageContainer>
       <TopicHeader topicId={topicId}/>
-      <Button onClick={() => setVisible(!visible)}>
-        {visible ? "Close" : "Add new entry"}
+      <Button onClick={() => setShow(!show)}>
+        {show ? "Close" : "Add new entry"}
       </Button>
       <NewEntryForm
         label="Title"
-        show={visible}
+        show={show}
+        setShow={setShow}
         maxLength={75}
         url={currentUrl}
       />
