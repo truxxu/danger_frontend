@@ -29,10 +29,9 @@ const Topic = (props) => {
   return (
     <PageContainer>
       <TopicHeader topicId={topicId}/>
-      <Button
-        name={visible ? "Close" : "Add new entry"}
-        onClick={() => setVisible(!visible)}
-      />
+      <Button onClick={() => setVisible(!visible)}>
+        {visible ? "Close" : "Add new entry"}
+      </Button>
       <NewEntryForm
         label="Title"
         show={visible}

@@ -42,10 +42,9 @@ const Discussion = () => {
           <CommentList data={posts}/>
         }
       </Container>
-      <Button
-        name={visible ? "Close" : "Reply"}
-        onClick={() => setVisible(!visible)}
-      />
+      <Button onClick={() => setVisible(!visible)}>
+        {visible ? "Close" : "Reply"}
+      </Button>
       <NewEntryForm
         label="Comment"
         show={visible}

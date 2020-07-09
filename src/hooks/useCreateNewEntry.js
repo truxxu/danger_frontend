@@ -4,15 +4,16 @@ import dangerApi from '../api/dangerApi';
 
 export default () => {
 
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
   const createNewEntry = async (resource, body) => {
+      setIsLoading(true);
     try {
       await dangerApi.post(resource, body);
-      setIsLoading(false);
     } catch (error) {
-      setErrorMessage('Couldn\'t create new entry');
+      setErrorMessage('Error! Couldn\'t create new entry');
+    } finally {
       setIsLoading(false);
     }
   }

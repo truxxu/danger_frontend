@@ -49,7 +49,12 @@ const NewEntryForm = ({show, maxLength, label, url}) => {
             onChange={(e) => handleTextChange(e)}
           />
         </div>
-        <Button type="submit" name="Post"/>
+        { errorMessage }
+        { isLoading ?
+          <Button disabled />
+          :
+          <Button type="submit">Post</Button>
+        }
       </form>
     </Container>
 
