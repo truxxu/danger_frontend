@@ -18,12 +18,14 @@ const Topic = (props) => {
   let { url } = useRouteMatch();
 
   const [show, setShow] = useState(false);
+  const [isCreated, setIsCreated] = useState(false);
+
   const [getDiscussions, discussions, isLoadingDiscussions] = useResources();
 
   useEffect(() => {
     getDiscussions(currentUrl)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [topicId]);
+  }, [topicId, isCreated]);
 
   return (
     <PageContainer>
@@ -35,6 +37,7 @@ const Topic = (props) => {
         label="Title"
         show={show}
         setShow={setShow}
+        setIsCreated={setIsCreated}
         maxLength={75}
         url={currentUrl}
       />
