@@ -8,7 +8,7 @@ import useCreateNewEntry from '../hooks/useCreateNewEntry';
 const NewEntryForm = ({show, setShow, maxLength, label, url, setIsCreated}) => {
 
   const [text, setText] = useState('');
-  const [author, setAuthor] = useState(undefined);
+  const [author, setAuthor] = useState('');
   const [charNum, setCharNum] = useState(0);
   const [createNewEntry, isLoading, errorMessage] = useCreateNewEntry();
 
@@ -21,14 +21,22 @@ const NewEntryForm = ({show, setShow, maxLength, label, url, setIsCreated}) => {
   const handleAuthorChange = (event) => setAuthor(event.target.value);
   const resetInput = () => {
     setText('');
-    setAuthor(undefined);
+    setAuthor('');
     setShow(false);
-    setIsCreated(true)
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createNewEntry(url, {author, title: text, message: text}, resetInput)
+    const authorPayload = author ? author : undefined;
+    createNewEntry(url,
+      {
+        author: authorPayload,
+        title: text,
+        message: text
+      },
+      resetInput,
+      setIsCreated,
+)
   }
 
   const content = <Container>

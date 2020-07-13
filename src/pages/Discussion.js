@@ -28,6 +28,7 @@ const Discussion = () => {
 
   useEffect(() => {
     getPosts(`${currentUrl}/posts`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isCreated]);
 
   return (
