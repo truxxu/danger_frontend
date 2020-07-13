@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import TopicHeader from '../molecules/TopicHeader';
 import Container from '../atoms/Container';
 import Button from '../atoms/Button';
-import LoadingIndicator from '../atoms/LoadingIndicator';
 import PageContainer from '../atoms/PageContainer';
 import CommentList from '../organisms/CommentList';
 import NewEntryForm from '../organisms/NewEntryForm';
@@ -14,15 +13,16 @@ import Comment from '../molecules/Comment';
 const Discussion = () => {
 
   let { topicId, discussionId } = useParams();
+  let currentUrl = `topics/${topicId}/discussions/${discussionId}`;
 
-  const [visible, setVisible] = useState(false);
+  const [show, setShow] = useState(false);
 
   const [getPosts, posts, isLoadingPosts] = useResources();
   const [getDiscussion, discussion] = useResources();
 
   useEffect(() => {
-    getDiscussion(`topics/${topicId}/discussions/${discussionId}`)
-    getPosts(`topics/${topicId}/discussions/${discussionId}/posts`)
+    getDiscussion(currentUrl);
+    getPosts(`${currentUrl}/posts`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -35,14 +35,19 @@ const Discussion = () => {
           <Comment data={discussion}/>
         </div>
       </Container>
-      <CommentList data={posts} isLoading={isLoadingPosts} />
-      <Button onClick={() => setVisible(!visible)}>
-        {visible ? "Close" : "Reply"}
+      <CommentList
+        data={posts}
+        isLoading={isLoadingPosts}
+      />
+      <Button onClick={() => setShow(!show)}>
+        {show ? "Close" : "Reply"}
       </Button>
       <NewEntryForm
         label="Comment"
-        show={visible}
+        show={show}
+        setShow={setShow}
         maxLength={500}
+        url={`${currentUrl}/posts`}
       />
     </PageContainer>
   )

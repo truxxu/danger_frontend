@@ -27,7 +27,7 @@ const NewEntryForm = ({show, setShow, maxLength, label, url}) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createNewEntry(url, {author, title: text}, resetInput)
+    createNewEntry(url, {author, title: text, message: text}, resetInput)
   }
 
   const content = <Container>

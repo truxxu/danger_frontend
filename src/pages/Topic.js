@@ -14,12 +14,11 @@ import useResources from '../hooks/useResources';
 const Topic = (props) => {
 
   let { topicId } = useParams();
-  const currentUrl = `topics/${topicId}/discussions`;
+  let currentUrl = `topics/${topicId}/discussions`;
   let { url } = useRouteMatch();
 
   const [show, setShow] = useState(false);
   const [getDiscussions, discussions, isLoadingDiscussions] = useResources();
-
 
   useEffect(() => {
     getDiscussions(currentUrl)
