@@ -1,8 +1,11 @@
 import React from 'react';
 
+import Container from '../atoms/Container';
+import LoadingIndicator from '../atoms/LoadingIndicator';
 import Comment from '../molecules/Comment';
 
-const CommentList = ({data}) => {
+
+const CommentList = ({data, isLoading}) => {
 
   const renderComment = () => {
     return data.map(comment => {
@@ -15,10 +18,24 @@ const CommentList = ({data}) => {
     })
   }
 
+  if (data.length > 0) {
+    return (
+      <Container>
+        { isLoading ?
+          <LoadingIndicator />
+          :
+          <div className="ui minimal comments">
+            {renderComment()}
+          </div>
+        }
+      </Container>
+    )
+  }
+
   return (
-    <div className="ui minimal comments">
-      {renderComment()}
-    </div>
+    <Container>
+      <div className="">Be the first to post</div>
+    </Container>
   )
 }
 

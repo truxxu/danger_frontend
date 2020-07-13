@@ -14,27 +14,32 @@ import useResources from '../hooks/useResources';
 const Topic = (props) => {
 
   let { topicId } = useParams();
+  let currentUrl = `topics/${topicId}/discussions`;
   let { url } = useRouteMatch();
 
-  const [visible, setVisible] = useState(false);
+  const [show, setShow] = useState(false);
+  const [isCreated, setIsCreated] = useState(false);
+
   const [getDiscussions, discussions, isLoadingDiscussions] = useResources();
 
   useEffect(() => {
-    getDiscussions(`topics/${topicId}/discussions`)
+    getDiscussions(currentUrl)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [topicId]);
+  }, [topicId, isCreated]);
 
   return (
     <PageContainer>
       <TopicHeader topicId={topicId}/>
-      <Button
-        name={visible ? "Close" : "Add new entry"}
-        onClick={() => setVisible(!visible)}
-      />
+      <Button onClick={() => setShow(!show)}>
+        {show ? "Close" : "Add new entry"}
+      </Button>
       <NewEntryForm
         label="Title"
-        show={visible}
+        show={show}
+        setShow={setShow}
+        setIsCreated={setIsCreated}
         maxLength={75}
+        url={currentUrl}
       />
       <div className="ui divider" />
       <Container>
