@@ -5,7 +5,7 @@ import Container from '../atoms/Container';
 import Button from '../atoms/Button';
 import useCreateNewEntry from '../hooks/useCreateNewEntry';
 
-const NewEntryForm = ({show, setShow, maxLength, label, url}) => {
+const NewEntryForm = ({show, setShow, maxLength, label, url, setIsCreated}) => {
 
   const [text, setText] = useState('');
   const [author, setAuthor] = useState(undefined);
@@ -23,6 +23,7 @@ const NewEntryForm = ({show, setShow, maxLength, label, url}) => {
     setText('');
     setAuthor(undefined);
     setShow(false);
+    setIsCreated(true)
   };
 
   const handleSubmit = (event) => {

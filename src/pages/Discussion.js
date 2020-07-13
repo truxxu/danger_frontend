@@ -5,10 +5,10 @@ import TopicHeader from '../molecules/TopicHeader';
 import Container from '../atoms/Container';
 import Button from '../atoms/Button';
 import PageContainer from '../atoms/PageContainer';
+import Comment from '../molecules/Comment';
 import CommentList from '../organisms/CommentList';
 import NewEntryForm from '../organisms/NewEntryForm';
 import useResources from '../hooks/useResources';
-import Comment from '../molecules/Comment';
 
 const Discussion = () => {
 
@@ -16,15 +16,19 @@ const Discussion = () => {
   let currentUrl = `topics/${topicId}/discussions/${discussionId}`;
 
   const [show, setShow] = useState(false);
+  const [isCreated, setIsCreated] = useState(false);
 
   const [getPosts, posts, isLoadingPosts] = useResources();
   const [getDiscussion, discussion] = useResources();
 
   useEffect(() => {
     getDiscussion(currentUrl);
-    getPosts(`${currentUrl}/posts`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    getPosts(`${currentUrl}/posts`);
+  }, [isCreated]);
 
   return (
     <PageContainer>
@@ -46,6 +50,7 @@ const Discussion = () => {
         label="Comment"
         show={show}
         setShow={setShow}
+        setIsCreated={setIsCreated}
         maxLength={500}
         url={`${currentUrl}/posts`}
       />
