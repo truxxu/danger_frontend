@@ -17,7 +17,7 @@ const Pagination = ({getDiscussions, url}) => {
       lastItem={null}
       siblingRange={1}
       defaultActivePage={1}
-      totalPages={10}
+      totalPages={5}
     />
   );
 }

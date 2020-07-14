@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useRouteMatch } from 'react-router-dom';
 
-import Container from '../atoms/Container';
 import Button from '../atoms/Button';
 import PageContainer from '../atoms/PageContainer';
-import LoadingIndicator from '../atoms/LoadingIndicator';
 import TopicHeader from '../molecules/TopicHeader';
 import NewEntryForm from '../organisms/NewEntryForm';
 import ItemList from '../organisms/ItemList';
@@ -41,14 +39,7 @@ const Topic = (props) => {
         maxLength={75}
         url={currentUrl}
       />
-      <div className="ui divider" />
-      <Container>
-        { isLoadingDiscussions ?
-          <LoadingIndicator />
-          :
-          <ItemList data={discussions} to={`${url}/discussion`}/>
-        }
-      </Container>
+      <ItemList data={discussions} to={`${url}/discussion`} isLoading={isLoadingDiscussions}/>
       <Pagination getDiscussions={getDiscussions} url={currentUrl} />
     </PageContainer>
   )
