@@ -49,7 +49,7 @@ const Topic = (props) => {
           <ItemList data={discussions} to={`${url}/discussion`}/>
         }
       </Container>
-      <Pagination />
+      <Pagination getDiscussions={getDiscussions} url={currentUrl} />
     </PageContainer>
   )
 }

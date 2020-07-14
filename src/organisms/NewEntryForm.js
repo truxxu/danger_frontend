@@ -36,8 +36,8 @@ const NewEntryForm = ({show, setShow, maxLength, label, url, setIsCreated}) => {
       },
       resetInput,
       setIsCreated,
-)
-  }
+    )
+  };
 
   const content = <Container>
       <form className="ui form" onSubmit={(e) => handleSubmit(e)}>
