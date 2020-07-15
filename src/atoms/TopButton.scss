@@ -1,0 +1,11 @@
+.TopButton {
+  position: fixed;
+  bottom: 135px;
+  right: 100px;
+}
+
+@media (max-width: 767px) {
+  .TopButton {
+    right: -6px;
+  }
+}
