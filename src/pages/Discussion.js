@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import TopicHeader from '../molecules/TopicHeader';
+import TopButton from '../atoms/TopButton';
 import Container from '../atoms/Container';
 import Button from '../atoms/Button';
 import PageContainer from '../atoms/PageContainer';
 import Comment from '../molecules/Comment';
+import TopicHeader from '../molecules/TopicHeader';
 import CommentList from '../organisms/CommentList';
 import NewEntryForm from '../organisms/NewEntryForm';
 import useResources from '../hooks/useResources';
@@ -55,6 +56,7 @@ const Discussion = () => {
         maxLength={500}
         url={`${currentUrl}/posts`}
       />
+      <TopButton />
     </PageContainer>
   )
 }
