@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 
 import './TopButton.scss';
 
 const TopButton = () => {
 
   const [showScroll, setShowScroll] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('scroll', checkScrollTop);
+    return () => {
+      window.removeEventListener('scroll', checkScrollTop);
+    };
+  })
 
   const checkScrollTop = () => {
    if (!showScroll && window.pageYOffset > 400){
@@ -13,8 +20,6 @@ const TopButton = () => {
       setShowScroll(false)
     }
   };
-
-  window.addEventListener('scroll', checkScrollTop);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
