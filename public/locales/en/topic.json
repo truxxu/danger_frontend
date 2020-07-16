@@ -1,0 +1,19 @@
+{
+  "button": {
+    "show": "Create new discussion",
+    "hide": "Close"
+  },
+  "form": {
+    "primaryLabel": "Name",
+    "placeholder": "Optional",
+    "secondaryLabel": "Title",
+    "buttonLabel": "Post"
+  },
+  "itemList": {
+    "placeholder": "Be the first to create a discussion"
+  },
+  "comments": {
+    "by": "by",
+    "on": "on"
+  }
+}

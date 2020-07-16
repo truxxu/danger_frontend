@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import './NewEntryForm.scss';
 import Container from '../atoms/Container';
@@ -11,6 +12,7 @@ const NewEntryForm = ({show, setShow, maxLength, label, url, setIsCreated}) => {
   const [author, setAuthor] = useState('');
   const [charNum, setCharNum] = useState(0);
   const [createNewEntry, isLoading, errorMessage] = useCreateNewEntry();
+  const { t } = useTranslation(['topic']);
 
   const handleTextChange = (event) => {
     const value = event.target.value;
@@ -42,7 +44,7 @@ const NewEntryForm = ({show, setShow, maxLength, label, url, setIsCreated}) => {
   const content = <Container>
       <form className="ui form" onSubmit={(e) => handleSubmit(e)}>
         <div className="field">
-          <label>Name</label>
+          <label>{t('topic:form.primaryLabel', 'Name')}</label>
           <input
             placeholder="(Optional)"
             maxLength={50}
@@ -67,7 +69,7 @@ const NewEntryForm = ({show, setShow, maxLength, label, url, setIsCreated}) => {
         { isLoading ?
           <Button disabled />
           :
-          <Button type="submit">Post</Button>
+          <Button type="submit">{t('topic:form.buttonLabel', 'Post')}</Button>
         }
       </form>
     </Container>
