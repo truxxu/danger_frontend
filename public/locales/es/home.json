@@ -1,4 +1,9 @@
 {
   "name": "Nombre del sitio",
-  "description": "Descripción del sitio"
+  "description": "Descripción del sitio",
+  "navigation": {
+    "faq": "Preguntas Frecuentes",
+    "about": "Acerca de nosotros",
+    "contact": "Contacto"
+  }
 }

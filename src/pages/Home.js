@@ -10,7 +10,11 @@ import { Context } from '../context/TopicsContext';
 const Home = () => {
 
   const { state } = useContext(Context);
-  const { t } = useTranslation(['home']);
+  const { t, i18n } = useTranslation(['home']);
+
+  const changeLanguage = code => {
+    i18n.changeLanguage(code);
+  };
 
   return (
     <PageContainer>
@@ -22,6 +26,13 @@ const Home = () => {
         content={t('home:description', 'Site description')}
         align="center aligned"
       />
+      <button type="button" onClick={() => changeLanguage('es')}>
+        ES
+      </button>
+
+      <button type="button" onClick={() => changeLanguage('en')}>
+        EN
+      </button>
       <ItemList
         data={state.topics}
         to="topic"
