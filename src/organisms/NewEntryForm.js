@@ -46,7 +46,7 @@ const NewEntryForm = ({show, setShow, maxLength, label, url, setIsCreated}) => {
         <div className="field">
           <label>{t('topic:form.primaryLabel', 'Name')}</label>
           <input
-            placeholder="(Optional)"
+            placeholder={t('topic:form.placeholder', '(Optional)')}
             maxLength={50}
             value={author}
             onChange={(e) => handleAuthorChange(e)}

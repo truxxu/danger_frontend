@@ -1,0 +1,18 @@
+{
+  "button": {
+    "show": "Reply",
+    "hide": "Close"
+  },
+  "form": {
+    "primaryLabel": "Name",
+    "placeholder": "Optional",
+    "secondaryLabel": "Comment",
+    "buttonLabel": "Post"
+  },
+  "commentList": {
+    "placeholder": "Be the first to comment"
+  },
+  "comments": {
+    "wrote": "wrote on"
+  }
+}

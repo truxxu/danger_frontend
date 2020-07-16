@@ -5,7 +5,7 @@
   },
   "form": {
     "primaryLabel": "Nombre",
-    "placeholder": "Opcional",
+    "placeholder": "(Opcional)",
     "secondaryLabel": "Título",
     "buttonLabel": "Publicar"
   },

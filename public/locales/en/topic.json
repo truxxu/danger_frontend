@@ -5,7 +5,7 @@
   },
   "form": {
     "primaryLabel": "Name",
-    "placeholder": "Optional",
+    "placeholder": "(Optional)",
     "secondaryLabel": "Title",
     "buttonLabel": "Post"
   },

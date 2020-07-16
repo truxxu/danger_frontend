@@ -1,0 +1,18 @@
+{
+  "button": {
+    "show": "Comentar",
+    "hide": "Cerrar"
+  },
+  "form": {
+    "primaryLabel": "Nombre",
+    "placeholder": "Opcional",
+    "secondaryLabel": "Comentario",
+    "buttonLabel": "Publicar"
+  },
+  "commentList": {
+    "placeholder": "Sé el primero en comentar"
+  },
+  "comments": {
+    "wrote": "escribió el"
+  }
+}

@@ -1,11 +1,13 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import Container from '../atoms/Container';
 import LoadingIndicator from '../atoms/LoadingIndicator';
 import Comment from '../molecules/Comment';
 
-
 const CommentList = ({data, isLoading}) => {
+
+  const { t } = useTranslation(['discussion']);
 
   const renderComment = () => {
     return data.map(comment => {
@@ -34,7 +36,9 @@ const CommentList = ({data, isLoading}) => {
 
   return (
     <Container>
-      <div className="">Be the first to post</div>
+      <div>
+        {t('discussion:commentList.placeholder', 'Be the first to comment')}
+      </div>
     </Container>
   )
 }
