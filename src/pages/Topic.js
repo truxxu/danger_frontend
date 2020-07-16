@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useRouteMatch } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import Button from '../atoms/Button';
 import PageContainer from '../atoms/PageContainer';
@@ -17,6 +18,7 @@ const Topic = (props) => {
 
   const [show, setShow] = useState(false);
   const [isCreated, setIsCreated] = useState(false);
+  const { t } = useTranslation(['topic']);
 
   const [getDiscussions, discussions, isLoadingDiscussions] = useResources();
 
@@ -29,17 +31,25 @@ const Topic = (props) => {
     <PageContainer>
       <TopicHeader topicId={topicId}/>
       <Button onClick={() => setShow(!show)}>
-        {show ? "Close" : "Add new entry"}
+        {show ?
+          t('topic:button.hide', 'Close')
+          :
+          t('topic:button.show', 'Create new discussion')
+        }
       </Button>
       <NewEntryForm
-        label="Title"
+        label={t('topic:form.secondaryLabel', 'Title')}
         show={show}
         setShow={setShow}
         setIsCreated={setIsCreated}
         maxLength={75}
         url={currentUrl}
       />
-      <ItemList data={discussions} to={`${url}/discussion`} isLoading={isLoadingDiscussions}/>
+      <ItemList
+        data={discussions}
+        to={`${url}/discussion`}
+        isLoading={isLoadingDiscussions}
+      />
       <Pagination getDiscussions={getDiscussions} url={currentUrl} />
     </PageContainer>
   )

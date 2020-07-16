@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import HeaderImage from '../atoms/HeaderImage';
 import Text from '../atoms/Text';
@@ -9,13 +10,16 @@ import { Context } from '../context/TopicsContext';
 const Home = () => {
 
   const { state } = useContext(Context);
+  const { t } = useTranslation(['home']);
 
   return (
     <PageContainer>
       <HeaderImage imageSrc="https://picsum.photos/300/200" />
-      <h1 className="ui header center aligned">Site Name</h1>
+      <h1 className="ui header center aligned">
+        {t('home:name', 'Site name')}
+      </h1>
       <Text
-        content="Description text about the site"
+        content={t('home:description', 'Site description')}
         align="center aligned"
       />
       <ItemList

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import TopButton from '../atoms/TopButton';
 import Container from '../atoms/Container';
@@ -21,6 +22,7 @@ const Discussion = () => {
 
   const [getPosts, posts, isLoadingPosts] = useResources();
   const [getDiscussion, discussion] = useResources();
+  const { t } = useTranslation(['discussion']);
 
   useEffect(() => {
     getDiscussion(currentUrl);
@@ -46,10 +48,14 @@ const Discussion = () => {
         isLoading={isLoadingPosts}
       />
       <Button onClick={() => setShow(!show)}>
-        {show ? "Close" : "Reply"}
+        {show ?
+          t('discussion:button.hide', 'Close')
+          :
+          t('discussion:button.show', 'Reply')
+        }
       </Button>
       <NewEntryForm
-        label="Comment"
+        label={t('discussion:form.secondaryLabel', 'Comment')}
         show={show}
         setShow={setShow}
         setIsCreated={setIsCreated}

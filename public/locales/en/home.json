@@ -1,0 +1,9 @@
+{
+  "name": "Site name",
+  "description": "Site description",
+  "navigation": {
+    "faq": "FAQ",
+    "about": "About",
+    "contact": "Contact"
+  }
+}

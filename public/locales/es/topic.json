@@ -1,0 +1,19 @@
+{
+  "button": {
+    "show": "Crear nueva discusión",
+    "hide": "Cerrar"
+  },
+  "form": {
+    "primaryLabel": "Nombre",
+    "placeholder": "(Opcional)",
+    "secondaryLabel": "Título",
+    "buttonLabel": "Publicar"
+  },
+  "itemList": {
+    "placeholder": "Sé el primero en crear una discusión"
+  },
+  "comments": {
+    "by": "por",
+    "on": "el"
+  }
+}
