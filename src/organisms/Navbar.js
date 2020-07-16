@@ -4,6 +4,7 @@ import { Link as NavLink } from "react-router-dom";
 import "./Navbar.scss";
 import Link from '../atoms/Link';
 import LoadingIndicator from '../atoms/LoadingIndicator';
+import LanguageMenu from '../molecules/LanguageMenu';
 import { Context } from '../context/TopicsContext';
 
 const Navbar = () => {
@@ -36,6 +37,7 @@ const Navbar = () => {
           :
           homeLink.concat(renderLinkList())
         }
+        <LanguageMenu />
       </div>
       <div className="ui divider" />
     </nav>
